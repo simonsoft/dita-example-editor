@@ -17,7 +17,7 @@ const TableToolbar = () => (
 	<MastheadToolbar>
 		<MastheadToolbarButtons>
 			<ButtonWithDrop
-				label="Row"
+				label='Row'
 				renderDrop={() => (
 					<Drop>
 						<Menu>
@@ -50,37 +50,37 @@ const TableToolbar = () => (
 			/>
 
 			<ButtonWithDrop
-				label="Column"
+				label='Column'
 				renderDrop={() => (
 					<Drop>
 						<Menu>
-							<FxOperationMenuItem operationName="column-insert" />
-							<FxOperationMenuItem operationName="column-after-insert" />
-							<FxOperationMenuItem operationName="column-delete" />
+							<FxOperationMenuItem operationName='column-insert' />
+							<FxOperationMenuItem operationName='column-after-insert' />
+							<FxOperationMenuItem operationName='column-delete' />
 						</Menu>
 					</Drop>
 				)}
 			/>
 
 			<ButtonWithDrop
-				label="Cell"
+				label='Cell'
 				renderDrop={() => (
 					<Drop>
 						<Menu>
 							<MenuGroup>
-								<FxOperationMenuItem operationName="split-cell-into-rows" />
-								<FxOperationMenuItem operationName="split-cell-into-columns" />
+								<FxOperationMenuItem operationName='split-cell-into-rows' />
+								<FxOperationMenuItem operationName='split-cell-into-columns' />
 							</MenuGroup>
 
 							<MenuGroup>
-								<FxOperationMenuItem operationName="merge-cell-right" />
-								<FxOperationMenuItem operationName="merge-cell-left" />
-								<FxOperationMenuItem operationName="merge-cell-above" />
-								<FxOperationMenuItem operationName="merge-cell-below" />
+								<FxOperationMenuItem operationName='merge-cell-right' />
+								<FxOperationMenuItem operationName='merge-cell-left' />
+								<FxOperationMenuItem operationName='merge-cell-above' />
+								<FxOperationMenuItem operationName='merge-cell-below' />
 							</MenuGroup>
 
 							<MenuGroup>
-								<FxOperationMenuItem operationName="split-cell-completely" />
+								<FxOperationMenuItem operationName='split-cell-completely' />
 							</MenuGroup>
 						</Menu>
 					</Drop>
@@ -90,12 +90,12 @@ const TableToolbar = () => (
 
 		<MastheadToolbarButtons>
 			<ButtonWithDrop
-				label="Headers"
+				label='Headers'
 				renderDrop={() => (
 					<Drop>
 						<Menu>
 							<MenuItemWithDrop
-								label="Rows"
+								label='Rows'
 								renderDrop={() => (
 									<Drop>
 										<Menu>
@@ -120,13 +120,13 @@ const TableToolbar = () => (
 							/>
 
 							<MenuItemWithDrop
-								label="Column"
+								label='Column'
 								renderDrop={() => (
 									<Drop>
 										<Menu>
-											<FxOperationMenuItem operationName=":set-table[@rowheader=firstcol]" />
+											<FxOperationMenuItem operationName=':set-table[@rowheader=firstcol]' />
 
-											<FxOperationMenuItem operationName=":set-table[@rowheader=null]" />
+											<FxOperationMenuItem operationName=':set-table[@rowheader=null]' />
 										</Menu>
 									</Drop>
 								)}
@@ -137,34 +137,34 @@ const TableToolbar = () => (
 			/>
 
 			<ButtonWithDrop
-				label="Borders"
+				label='Borders'
 				renderDrop={() => (
 					<Drop>
 						<Menu>
-							<FxOperationMenuItem operationName="add-table-borders" />
-							<FxOperationMenuItem operationName="remove-table-borders" />
+							<FxOperationMenuItem operationName='add-table-borders' />
+							<FxOperationMenuItem operationName='remove-table-borders' />
 
 							<MenuItemWithDrop
-								label="Cell border"
+								label='Cell border'
 								renderDrop={() => (
 									<Drop>
 										<Menu>
 											<MenuGroup>
 												<FxOperationMenuItem
-													label="All cell borders"
-													operationName="cals-set-cell-border-all"
+													label='All cell borders'
+													operationName='cals-set-cell-border-all'
 												/>
 												<FxOperationMenuItem
-													label="No cell borders"
-													operationName="cals-set-cell-border-none"
+													label='No cell borders'
+													operationName='cals-set-cell-border-none'
 												/>
 											</MenuGroup>
 
 											<MenuGroup>
-												<FxOperationMenuItem operationName="cals-set-cell-border-top" />
-												<FxOperationMenuItem operationName="cals-set-cell-border-bottom" />
-												<FxOperationMenuItem operationName="cals-set-cell-border-left" />
-												<FxOperationMenuItem operationName="cals-set-cell-border-right" />
+												<FxOperationMenuItem operationName='cals-set-cell-border-top' />
+												<FxOperationMenuItem operationName='cals-set-cell-border-bottom' />
+												<FxOperationMenuItem operationName='cals-set-cell-border-left' />
+												<FxOperationMenuItem operationName='cals-set-cell-border-right' />
 											</MenuGroup>
 										</Menu>
 									</Drop>
@@ -176,21 +176,21 @@ const TableToolbar = () => (
 			/>
 
 			<ButtonWithDrop
-				label="Cell alignment"
+				label='Cell alignment'
 				renderDrop={() => (
 					<Drop>
 						<Menu>
 							<MenuGroup>
-								<FxOperationMenuItem operationName="cals-set-cell-horizontal-alignment-left" />
-								<FxOperationMenuItem operationName="cals-set-cell-horizontal-alignment-right" />
-								<FxOperationMenuItem operationName="cals-set-cell-horizontal-alignment-center" />
-								<FxOperationMenuItem operationName="cals-set-cell-horizontal-alignment-justify" />
+								<FxOperationMenuItem operationName='cals-set-cell-horizontal-alignment-left' />
+								<FxOperationMenuItem operationName='cals-set-cell-horizontal-alignment-right' />
+								<FxOperationMenuItem operationName='cals-set-cell-horizontal-alignment-center' />
+								<FxOperationMenuItem operationName='cals-set-cell-horizontal-alignment-justify' />
 							</MenuGroup>
 
 							<MenuGroup>
-								<FxOperationMenuItem operationName="cals-set-cell-vertical-alignment-top" />
-								<FxOperationMenuItem operationName="cals-set-cell-vertical-alignment-bottom" />
-								<FxOperationMenuItem operationName="cals-set-cell-vertical-alignment-center" />
+								<FxOperationMenuItem operationName='cals-set-cell-vertical-alignment-top' />
+								<FxOperationMenuItem operationName='cals-set-cell-vertical-alignment-bottom' />
+								<FxOperationMenuItem operationName='cals-set-cell-vertical-alignment-center' />
 							</MenuGroup>
 						</Menu>
 					</Drop>

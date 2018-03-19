@@ -17,20 +17,20 @@ const StructureToolbar = () => (
 	<MastheadToolbar>
 		<MastheadToolbarButtons>
 			<ButtonWithDrop
-				label="Formatting"
+				label='Formatting'
 				renderDrop={() => (
 					<Drop>
 						<Menu>
 							<MenuGroup>
-								<FxOperationMenuItem operationName=":toggle-b" />
-								<FxOperationMenuItem operationName=":toggle-i" />
-								<FxOperationMenuItem operationName=":toggle-u" />
-								<FxOperationMenuItem operationName=":toggle-line-through" />
+								<FxOperationMenuItem operationName=':toggle-b' />
+								<FxOperationMenuItem operationName=':toggle-i' />
+								<FxOperationMenuItem operationName=':toggle-u' />
+								<FxOperationMenuItem operationName=':toggle-line-through' />
 							</MenuGroup>
 
 							<MenuGroup>
-								<FxOperationMenuItem operationName=":toggle-overline" />
-								<FxOperationMenuItem operationName=":toggle-tt" />
+								<FxOperationMenuItem operationName=':toggle-overline' />
+								<FxOperationMenuItem operationName=':toggle-tt' />
 							</MenuGroup>
 						</Menu>
 					</Drop>
@@ -39,29 +39,29 @@ const StructureToolbar = () => (
 		</MastheadToolbarButtons>
 
 		<MastheadToolbarButtons>
-			<FxOperationButton operationName=":toggle-sub" />
-			<FxOperationButton operationName=":toggle-sup" />
+			<FxOperationButton operationName=':toggle-sub' />
+			<FxOperationButton operationName=':toggle-sup' />
 		</MastheadToolbarButtons>
 
 		<MastheadToolbarButtons>
-			<FxOperationButton operationName=":toggle-ph" />
+			<FxOperationButton operationName=':toggle-ph' />
 		</MastheadToolbarButtons>
 
 		<MastheadToolbarButtons>
-			<FxOperationButton operationName=":toggle-q" />
+			<FxOperationButton operationName=':toggle-q' />
 			<ButtonWithDrop
-				icon="trademark"
-				label="Trademark"
+				icon='trademark'
+				label='Trademark'
 				renderDrop={() => (
 					<Drop>
 						<Menu>
 							<MenuGroup>
-								<FxOperationMenuItem operationName=":insert-tm[@tmtype=reg]" />
+								<FxOperationMenuItem operationName=':insert-tm[@tmtype=reg]' />
 							</MenuGroup>
 
 							<MenuGroup>
-								<FxOperationMenuItem operationName=":insert-tm[@tmtype=tm]" />
-								<FxOperationMenuItem operationName=":insert-tm[@tmtype=service]" />
+								<FxOperationMenuItem operationName=':insert-tm[@tmtype=tm]' />
+								<FxOperationMenuItem operationName=':insert-tm[@tmtype=service]' />
 							</MenuGroup>
 						</Menu>
 					</Drop>
@@ -71,13 +71,13 @@ const StructureToolbar = () => (
 
 		<MastheadToolbarButtons>
 			<ButtonWithDrop
-				icon="link"
-				label="Link"
+				icon='link'
+				label='Link'
 				renderDrop={() => (
 					<Drop>
 						<Menu>
-							<FxOperationMenuItem operationName=":insert-xref[@format=html]" />
-							<FxOperationMenuItem operationName=":insert-xref[@format=dita]" />
+							<FxOperationMenuItem operationName=':insert-xref[@format=html]' />
+							<FxOperationMenuItem operationName=':insert-xref[@format=dita]' />
 						</Menu>
 					</Drop>
 				)}
@@ -88,7 +88,7 @@ const StructureToolbar = () => (
 					{ operationName: ':insert-image' },
 					{ operationName: ':insert-fig.image' }
 				]}
-				tooltipContent="Any of the below"
+				tooltipContent='Any of the below'
 			/>
 		</MastheadToolbarButtons>
 	</MastheadToolbar>

@@ -8,6 +8,8 @@ import FxEditorMasthead from 'fontoxml-fx/FxEditorMasthead.jsx';
 import FxOperationButton from 'fontoxml-fx/FxOperationButton.jsx';
 import FxSaveButton from 'fontoxml-fx/FxSaveButton.jsx';
 
+// To keep the size of our Masthead.jsx.js manageable, most of the toolbar components are actually defined in their
+// own file.
 import AdvancedToolbar from './toolbars/AdvancedToolbar.jsx';
 import GlossaryToolbar from './toolbars/GlossaryToolbar.jsx';
 import InlineToolbar from './toolbars/InlineToolbar.jsx';
@@ -19,7 +21,19 @@ import TableToolbar from './toolbars/TableToolbar.jsx';
 import TaskToolbar from './toolbars/TaskToolbar.jsx';
 import ToolsToolbar from './toolbars/ToolsToolbar.jsx';
 
-const labels = {
+// This object is passed to FxBooleanXPathQueryByNameFromSelection so we can easily pass some context information
+// to child components in the masthead.
+const xpathQueryByName = {
+	matching: 'ancestor-or-self::lcMatching2',
+	multipleSelect: 'ancestor-or-self::lcMultipleSelect2',
+	openQuestion: 'ancestor-or-self::lcOpenQuestion2',
+	sequencing: 'ancestor-or-self::lcSequencing2',
+	singleSelect: 'ancestor-or-self::lcSingleSelect2',
+	trueFalse: 'ancestor-or-self::lcTrueFalse2'
+};
+
+// One toolbar changes its label depending on which interaction type the user is editing at that time.
+const toolbarLabelByName = {
 	matching: 'Matching question',
 	multipleSelect: 'Multiple choice',
 	openQuestion: 'Open question',
@@ -28,18 +42,32 @@ const labels = {
 	trueFalse: 'True/false choice'
 };
 
-const getQuestionLabel = result =>
-	Object.keys(result).reduce((label, type) => {
-		if (result[type] && labels[type]) {
-			return labels[type];
+// Returns the toolbar label appropriate for the "question" toolbar based on which xPath matches the cursor position.
+function getQuestionLabel (xpathQueryResultByName) {
+	return Object.keys(xpathQueryResultByName).reduce((label, type) => {
+		if (xpathQueryResultByName[type] && toolbarLabelByName[type]) {
+			return toolbarLabelByName[type];
 		}
 		return label;
 	}, 'Question');
+}
 
 const tabs = result => [
-	{ id: 'start', label: 'Start', content: <StartToolbar /> },
-	{ id: 'structure', label: 'Structure', content: <StructureToolbar /> },
-	{ id: 'inline', label: 'Inline', content: <InlineToolbar /> },
+	{
+		id: 'start',
+		label: 'Start',
+		content: <StartToolbar />
+	},
+	{
+		id: 'structure',
+		label: 'Structure',
+		content: <StructureToolbar />
+	},
+	{
+		id: 'inline',
+		label: 'Inline',
+		content: <InlineToolbar />
+	},
 	{
 		id: 'table',
 		label: 'Table',
@@ -76,39 +104,40 @@ const tabs = result => [
 		isHighlightedTab: true,
 		content: <QuestionToolbar />
 	},
-	{ id: 'advanced', label: 'Advanced', content: <AdvancedToolbar /> },
-	{ id: 'tools', label: 'Tools', content: <ToolsToolbar /> }
+	{
+		id: 'advanced',
+		label: 'Advanced',
+		content: <AdvancedToolbar />
+	},
+	{
+		id: 'tools',
+		label: 'Tools',
+		content: <ToolsToolbar />
+	}
 ];
 
-export default function FruxMasthead() {
+// Creating a small stateless component makes our code shallower. This component is then used as prop to
+// FxEditorMasthead.
+function QuickAccessButtons () {
 	return (
-		<FxBooleanXPathQueryByNameFromSelection
-			xpathQueryByName={{
-				matching: 'ancestor-or-self::lcMatching2',
-				multipleSelect: 'ancestor-or-self::lcMultipleSelect2',
-				openQuestion: 'ancestor-or-self::lcOpenQuestion2',
-				sequencing: 'ancestor-or-self::lcSequencing2',
-				singleSelect: 'ancestor-or-self::lcSingleSelect2',
-				trueFalse: 'ancestor-or-self::lcTrueFalse2'
-			}}
-		>
+		<Flex flexDirection='row' flex='none'>
+			<FxOperationButton label='' operationName='undo' />
+			<FxOperationButton label='' operationName='redo' />
+			<FxOperationButton label='' operationName='convert-range-to-plain-text' />
+			<FxSaveButton />
+		</Flex>
+	);
+}
+
+// Export the main component
+export default function Masthead() {
+	return (
+		<FxBooleanXPathQueryByNameFromSelection xpathQueryByName={ xpathQueryByName }>
 			{({ xpathQueryResultByName }) => (
 				<FxEditorMasthead
-					quickAccessButtons={
-						<Flex flexDirection="row" flex="none">
-							<FxOperationButton label="" operationName="undo" />
-							<FxOperationButton label="" operationName="redo" />
-
-							<FxOperationButton
-								label=""
-								operationName="convert-range-to-plain-text"
-							/>
-
-							<FxSaveButton />
-						</Flex>
-					}
-					mastheadAlignRightContent={<FindAndReplaceDropButton />}
-					tabs={tabs(xpathQueryResultByName)}
+					tabs={ tabs(xpathQueryResultByName) }
+					quickAccessButtons={ <QuickAccessButtons /> }
+					mastheadAlignRightContent={ <FindAndReplaceDropButton /> }
 				/>
 			)}
 		</FxBooleanXPathQueryByNameFromSelection>

@@ -26,26 +26,26 @@ const QuestionToolbar = () => (
 		{({ xpathQueryResultByName }) => (
 			<MastheadToolbar>
 				<MastheadToolbarButtons>
-					<FxOperationButton operationName="insert-{question}--from-operation-browser" />
+					<FxOperationButton operationName='insert-{question}--from-operation-browser' />
 				</MastheadToolbarButtons>
 
 				<MastheadToolbarButtons>
-					<FxOperationButton operationName=":insert-lcInteractionLabel2" />
-					<FxOperationButton operationName=":insert-image--in-lcAsset2" />
+					<FxOperationButton operationName=':insert-lcInteractionLabel2' />
+					<FxOperationButton operationName=':insert-image--in-lcAsset2' />
 				</MastheadToolbarButtons>
 
 				{xpathQueryResultByName.matching && (
 					<MastheadToolbarButtons>
-						<FxOperationButton operationName=":insert-lcMatchingHeader2" />
-						<FxOperationButton operationName=":insert-lcMatchingPair2" />
+						<FxOperationButton operationName=':insert-lcMatchingHeader2' />
+						<FxOperationButton operationName=':insert-lcMatchingPair2' />
 						<ButtonWithDrop
-							label="Pair feedback"
+							label='Pair feedback'
 							renderDrop={() => (
 								<Drop>
 									<Menu>
-										<FxOperationMenuItem operationName=":insert-lcFeedback2--in-lcMatchingPair2" />
-										<FxOperationMenuItem operationName=":insert-lcFeedbackIncorrect2--in-lcMatchingPair2" />
-										<FxOperationMenuItem operationName=":insert-lcFeedbackCorrect2--in-lcMatchingPair2" />
+										<FxOperationMenuItem operationName=':insert-lcFeedback2--in-lcMatchingPair2' />
+										<FxOperationMenuItem operationName=':insert-lcFeedbackIncorrect2--in-lcMatchingPair2' />
+										<FxOperationMenuItem operationName=':insert-lcFeedbackCorrect2--in-lcMatchingPair2' />
 									</Menu>
 								</Drop>
 							)}
@@ -55,32 +55,32 @@ const QuestionToolbar = () => (
 
 				{xpathQueryResultByName.multipleOrSingleSelect && (
 					<MastheadToolbarButtons>
-						<FxOperationButton operationName=":insert-lcAnswerOption2" />
-						<FxOperationButton operationName=":insert-lcFeedback2" />
+						<FxOperationButton operationName=':insert-lcAnswerOption2' />
+						<FxOperationButton operationName=':insert-lcFeedback2' />
 					</MastheadToolbarButtons>
 				)}
 
 				{xpathQueryResultByName.openQuestion && (
 					<MastheadToolbarButtons>
-						<FxOperationButton operationName=":insert-lcOpenAnswer2" />
+						<FxOperationButton operationName=':insert-lcOpenAnswer2' />
 					</MastheadToolbarButtons>
 				)}
 
 				{xpathQueryResultByName.sequencing && (
 					<MastheadToolbarButtons>
-						<FxOperationButton operationName=":insert-lcSequenceOption2" />
+						<FxOperationButton operationName=':insert-lcSequenceOption2' />
 					</MastheadToolbarButtons>
 				)}
 
 				{xpathQueryResultByName.trueFalse && (
 					<MastheadToolbarButtons>
-						<FxOperationButton operationName=":insert-lcFeedback2" />
+						<FxOperationButton operationName=':insert-lcFeedback2' />
 					</MastheadToolbarButtons>
 				)}
 
 				<MastheadToolbarButtons>
-					<FxOperationButton operationName=":insert-lcFeedbackIncorrect2" />
-					<FxOperationButton operationName=":insert-lcFeedbackCorrect2" />
+					<FxOperationButton operationName=':insert-lcFeedbackIncorrect2' />
+					<FxOperationButton operationName=':insert-lcFeedbackCorrect2' />
 				</MastheadToolbarButtons>
 			</MastheadToolbar>
 		)}

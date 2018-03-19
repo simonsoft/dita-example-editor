@@ -20,22 +20,22 @@ const StructureToolbar = () => (
 	<MastheadToolbar>
 		<MastheadToolbarButtons>
 			<ButtonWithDrop
-				label="Insert topic"
+				label='Insert topic'
 				renderDrop={() => (
 					<Drop>
 						<Menu>
 							<MenuGroup>
-								<FxOperationMenuItem operationName="insert-topicref--from-template" />
-								<FxOperationMenuItem operationName="insert-topicref--to-existing-document" />
+								<FxOperationMenuItem operationName='insert-topicref--from-template' />
+								<FxOperationMenuItem operationName='insert-topicref--to-existing-document' />
 							</MenuGroup>
 
 							<MenuGroup>
 								<FxOperationMenuItem
-									icon="sitemap"
-									label="View the structure panel"
+									icon='sitemap'
+									label='View the structure panel'
 									operationData={{ panesId: 'sidebar', paneId: 'structure' }}
-									operationName="open-ui-pane"
-									tooltipContent="Document structure"
+									operationName='open-ui-pane'
+									tooltipContent='Document structure'
 								/>
 							</MenuGroup>
 						</Menu>
@@ -46,97 +46,97 @@ const StructureToolbar = () => (
 
 		<MastheadToolbarButtons>
 			<ButtonWithDrop
-				label="Table"
-				icon="table"
+				label='Table'
+				icon='table'
 				renderDrop={() => (
 					<Drop>
 						<Menu>
 							<MenuGroup>
 								<MenuItemWithDrop
-									label="Generic table"
+									label='Generic table'
 									renderDrop={() => (
 										<Drop>
-											<FxOperationInsertTableMenu operationName=":insert-cals-table" />
+											<FxOperationInsertTableMenu operationName=':insert-cals-table' />
 										</Drop>
 									)}
 								/>
 
 								<MenuItemWithDrop
-									label="Simple table"
+									label='Simple table'
 									renderDrop={() => (
 										<Drop>
-											<FxOperationInsertTableMenu operationName="simpletable-insert" />
+											<FxOperationInsertTableMenu operationName='simpletable-insert' />
 										</Drop>
 									)}
 								/>
 
 								<MenuItemWithDrop
-									label="Simple table in figure"
+									label='Simple table in figure'
 									renderDrop={() => (
 										<Drop>
-											<FxOperationInsertTableMenu operationName=":insert-fig.simpletable" />
+											<FxOperationInsertTableMenu operationName=':insert-fig.simpletable' />
 										</Drop>
 									)}
 								/>
 							</MenuGroup>
 
 							<MenuGroup>
-								<FxOperationMenuItem operationName=":insert-dl" />
+								<FxOperationMenuItem operationName=':insert-dl' />
 							</MenuGroup>
 						</Menu>
 					</Drop>
 				)}
 			/>
 
-			<FxOperationButton operationName=":insert-dl" />
+			<FxOperationButton operationName=':insert-dl' />
 
 			<FxOperationsSplitButtonWithDropMenu
 				operations={[
 					{ operationName: ':insert-fig.image' },
 					{ operationName: ':insert-image' }
 				]}
-				tooltipContent="Any of the below"
+				tooltipContent='Any of the below'
 			/>
 		</MastheadToolbarButtons>
 
 		<MastheadToolbarButtons>
 			<ButtonWithDrop
-				label="Intro"
+				label='Intro'
 				renderDrop={() => (
 					<Drop>
 						<Menu>
-							<FxOperationMenuItem operationName=":insert-shortdesc" />
-							<FxOperationMenuItem operationName=":insert-abstract" />
+							<FxOperationMenuItem operationName=':insert-shortdesc' />
+							<FxOperationMenuItem operationName=':insert-abstract' />
 						</Menu>
 					</Drop>
 				)}
 			/>
 
 			<ButtonWithDrop
-				label="Section"
+				label='Section'
 				renderDrop={() => (
 					<Drop>
 						<Menu>
-							<FxOperationMenuItem operationName=":insert-section" />
-							<FxOperationMenuItem operationName=":insert-example" />
+							<FxOperationMenuItem operationName=':insert-section' />
+							<FxOperationMenuItem operationName=':insert-example' />
 						</Menu>
 					</Drop>
 				)}
 			/>
 
 			<ButtonWithDrop
-				label="Group"
+				label='Group'
 				renderDrop={() => (
 					<Drop>
 						<Menu>
-							<FxOperationMenuItem operationName=":insert-div" />
+							<FxOperationMenuItem operationName=':insert-div' />
 							<FxMultiOperationsMenuItem
 								operations={[
 									{ operationName: ':insert-bodydiv' },
 									{ operationName: ':insert-conbodydiv' }
 								]}
 							/>
-							<FxOperationMenuItem operationName=":insert-sectiondiv" />
+							<FxOperationMenuItem operationName=':insert-sectiondiv' />
 						</Menu>
 					</Drop>
 				)}
@@ -145,52 +145,52 @@ const StructureToolbar = () => (
 
 		<MastheadToolbarButtons>
 			<ButtonWithDrop
-				icon="sticky-note-o"
-				label="Note"
+				icon='sticky-note-o'
+				label='Note'
 				renderDrop={() => (
 					<Drop>
 						<Menu>
 							<MenuGroup>
 								<FxOperationMenuItem
-									label="Generic note"
-									operationName=":insert-note--task"
+									label='Generic note'
+									operationName=':insert-note--task'
 								/>
 							</MenuGroup>
 
 							<MenuGroup>
-								<FxOperationMenuItem operationName=":insert-note[@type=attention]--task" />
-								<FxOperationMenuItem operationName=":insert-note[@type=caution]--task" />
-								<FxOperationMenuItem operationName=":insert-note[@type=danger]--task" />
-								<FxOperationMenuItem operationName=":insert-note[@type=fastpath]--task" />
-								<FxOperationMenuItem operationName=":insert-note[@type=important]--task" />
-								<FxOperationMenuItem operationName=":insert-note[@type=notice]--task" />
-								<FxOperationMenuItem operationName=":insert-note[@type=remember]--task" />
-								<FxOperationMenuItem operationName=":insert-note[@type=restriction]--task" />
-								<FxOperationMenuItem operationName=":insert-note[@type=tip]--task" />
-								<FxOperationMenuItem operationName=":insert-note[@type=warning]--task" />
-								<FxOperationMenuItem operationName=":insert-note[@type=other]--task" />
+								<FxOperationMenuItem operationName=':insert-note[@type=attention]--task' />
+								<FxOperationMenuItem operationName=':insert-note[@type=caution]--task' />
+								<FxOperationMenuItem operationName=':insert-note[@type=danger]--task' />
+								<FxOperationMenuItem operationName=':insert-note[@type=fastpath]--task' />
+								<FxOperationMenuItem operationName=':insert-note[@type=important]--task' />
+								<FxOperationMenuItem operationName=':insert-note[@type=notice]--task' />
+								<FxOperationMenuItem operationName=':insert-note[@type=remember]--task' />
+								<FxOperationMenuItem operationName=':insert-note[@type=restriction]--task' />
+								<FxOperationMenuItem operationName=':insert-note[@type=tip]--task' />
+								<FxOperationMenuItem operationName=':insert-note[@type=warning]--task' />
+								<FxOperationMenuItem operationName=':insert-note[@type=other]--task' />
 							</MenuGroup>
 
 							<MenuGroup>
-								<FxOperationMenuItem operationName="insert-note[@conref]" />
+								<FxOperationMenuItem operationName='insert-note[@conref]' />
 							</MenuGroup>
 						</Menu>
 					</Drop>
 				)}
 			/>
 
-			<FxOperationButton operationName=":insert-lq" />
-			<FxOperationButton operationName=":insert-fn" />
+			<FxOperationButton operationName=':insert-lq' />
+			<FxOperationButton operationName=':insert-fn' />
 		</MastheadToolbarButtons>
 
 		<MastheadToolbarButtons>
 			<ButtonWithDrop
-				label="Related links"
+				label='Related links'
 				renderDrop={() => (
 					<Drop>
 						<Menu>
-							<FxOperationMenuItem operationName=":insert-link[@format=html]" />
-							<FxOperationMenuItem operationName=":insert-link[@format=dita]" />
+							<FxOperationMenuItem operationName=':insert-link[@format=html]' />
+							<FxOperationMenuItem operationName=':insert-link[@format=dita]' />
 						</Menu>
 					</Drop>
 				)}
