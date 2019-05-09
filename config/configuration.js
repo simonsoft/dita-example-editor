@@ -7,8 +7,8 @@ define([
 
 	configurationManager.set('paragraph-node-name-for-pasting', 'p');
 
-	configurationManager.set('conrefs-use-permanent-references', false);
-	configurationManager.set('map-manager-use-permanent-references', false);
+	configurationManager.set('conrefs-use-permanent-references', true);
+	configurationManager.set('map-manager-use-permanent-references', true);
 
 	configurationManager.set('preferred-locales', ['en']);
 
@@ -29,4 +29,6 @@ define([
 			localName: 'id'
 		}
 	]);
+
+	configurationManager.set('map-manager-automatically-load-topicrefs', false);
 });
