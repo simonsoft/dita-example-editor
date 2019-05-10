@@ -31,6 +31,7 @@
 		"fontoxml-structure-view": "platform/fontoxml-structure-view",
 		"fontoxml-table-flow-cals": "platform/fontoxml-table-flow-cals",
 		"fontoxml-web-references": "platform/fontoxml-web-references",
-		"fontoxml-xml-view": "platform/fontoxml-xml-view"
+		"fontoxml-xml-view": "platform/fontoxml-xml-view",
+		"fontoxml-attributes-editor": "platform/fontoxml-attributes-editor"
 	}
 }

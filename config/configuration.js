@@ -5,6 +5,10 @@ define([
 ) {
 	'use strict';
 
+  //configurationManager.set('theme-name', 'neutral');
+
+  configurationManager.set('attributes-editor-configuration', '{}');
+
 	configurationManager.set('paragraph-node-name-for-pasting', 'p');
 
 	configurationManager.set('conrefs-use-permanent-references', false);
