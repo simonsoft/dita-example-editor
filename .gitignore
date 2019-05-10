@@ -22,3 +22,5 @@
 # Proprietary files, please go to sdk.fontoxml.com to download your version of the SDK
 /platform/
 /tools/
+
+/backup-*
