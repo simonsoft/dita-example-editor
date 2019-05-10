@@ -90,13 +90,6 @@ const StructureToolbar = () => (
 				)}
 			/>
 
-			<FxOperationsSplitButtonWithDropMenu
-				operations={[
-					{ operationName: ':insert-dl' },
-					{ operationName: ':insert-parml' },
-					{ operationName: ':insert-properties' }
-				]}
-			/>
 
 			<FxOperationsSplitButtonWithDropMenu
 				operations={[
@@ -117,17 +110,6 @@ const StructureToolbar = () => (
 		</MastheadToolbarButtons>
 
 		<MastheadToolbarButtons>
-			<ButtonWithDrop
-				label="Intro"
-				renderDrop={() => (
-					<Drop>
-						<Menu>
-							<FxOperationMenuItem operationName=":insert-shortdesc" />
-							<FxOperationMenuItem operationName=":insert-abstract" />
-						</Menu>
-					</Drop>
-				)}
-			/>
 
 			<ButtonWithDrop
 				label="Section"
@@ -147,24 +129,6 @@ const StructureToolbar = () => (
 				)}
 			/>
 
-			<ButtonWithDrop
-				label="Group"
-				renderDrop={() => (
-					<Drop>
-						<Menu>
-							<FxOperationMenuItem operationName=":insert-div" />
-							<FxMultiOperationsMenuItem
-								operations={[
-									{ operationName: ':insert-bodydiv' },
-									{ operationName: ':insert-conbodydiv' },
-									{ operationName: ':insert-refbodydiv' }
-								]}
-							/>
-							<FxOperationMenuItem operationName=":insert-sectiondiv" />
-						</Menu>
-					</Drop>
-				)}
-			/>
 		</MastheadToolbarButtons>
 
 		<MastheadToolbarButtons>
@@ -207,19 +171,6 @@ const StructureToolbar = () => (
 			<FxOperationButton operationName=":insert-fn" />
 		</MastheadToolbarButtons>
 
-		<MastheadToolbarButtons>
-			<ButtonWithDrop
-				label="Related links"
-				renderDrop={() => (
-					<Drop>
-						<Menu>
-							<FxOperationMenuItem operationName=":insert-link[@format=html]" />
-							<FxOperationMenuItem operationName=":insert-link[@format=dita]" />
-						</Menu>
-					</Drop>
-				)}
-			/>
-		</MastheadToolbarButtons>
 	</MastheadToolbar>
 );
 

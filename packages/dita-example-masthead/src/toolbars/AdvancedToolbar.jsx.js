@@ -35,6 +35,19 @@ const AdvancedToolbar = () => (
 		</MastheadToolbarButtons>
 
 		<MastheadToolbarButtons>
+      <ButtonWithDrop
+        label="Intro"
+        renderDrop={() => (
+          <Drop>
+            <Menu>
+              <FxOperationMenuItem operationName=":insert-shortdesc" />
+              <FxOperationMenuItem operationName=":insert-abstract" />
+            </Menu>
+          </Drop>
+        )}
+      />
+
+
 			<ButtonWithDrop
 				icon="exclamation-circle"
 				label="Hazard statement"

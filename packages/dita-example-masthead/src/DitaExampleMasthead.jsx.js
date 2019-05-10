@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Flex } from 'fds/components';
+import { Flex, ContainedImage } from 'fds/components';
 
 import FindAndReplaceDropButton from 'fontoxml-find-and-replace/FindAndReplaceDropButton.jsx';
 import FxBooleanXPathQueryByNameFromSelection from 'fontoxml-fx/FxBooleanXPathQueryByNameFromSelection.jsx';
@@ -18,6 +18,9 @@ import StructureToolbar from './toolbars/StructureToolbar.jsx';
 import TableToolbar from './toolbars/TableToolbar.jsx';
 import TaskToolbar from './toolbars/TaskToolbar.jsx';
 import ToolsToolbar from './toolbars/ToolsToolbar.jsx';
+
+const srcsvg = 'https://s3-eu-west-1.amazonaws.com/review.simonsoftcms.se/svg/Simonsoft_wht.svg';
+const srcpng = 'https://s3-eu-west-1.amazonaws.com/review.simonsoftcms.se/png/Simonsoft_wht.png';
 
 const labels = {
 	matching: 'Matching question',
@@ -94,6 +97,8 @@ export default function DitaExampleMasthead () {
 		>
 			{({ xpathQueryResultByName }) => (
 				<FxEditorMasthead
+          showFontoLogo={false}
+          clientLogo={<ContainedImage src={srcpng} />}
 					quickAccessButtons={
 						<Flex flexDirection="row" flex="none">
 							<FxOperationButton label="" operationName="undo" />
