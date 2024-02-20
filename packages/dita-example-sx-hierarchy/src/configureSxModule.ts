@@ -80,8 +80,8 @@ export default function configureSxModule(sxModule: SxModule): void {
     sxModule,
     xq`self::*[(fonto:dita-class(., "map/topicref") and @format="ditamap") or self::mapref][@href][contains(@href, '#')]`,
     {
-      // TODO: Currently incomplete...
-      hierarchyChildNodesQuery: xq`fonto:document(substring-before(@href, '#'))//*[@id]`,
+      // Mapref with fragment functional in hierarchy, failure in other package.
+      hierarchyChildNodesQuery: xq` let $href := @href return fonto:document(substring-before(@href, '#'))//*[@id = substring-after($href, '#')]`,
       priority: 10
     }
   );
