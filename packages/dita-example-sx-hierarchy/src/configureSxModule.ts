@@ -46,15 +46,23 @@ export default function configureSxModule(sxModule: SxModule): void {
 	// hierarchy node's Outline item.
 	configureProperties(
 		sxModule,
-		xq`self::*[fonto:dita-class(., "map/topicref") and @href]`,
+		xq`self::*[fonto:dita-class(., "map/topicref")][@href]`,
 		{
 			hierarchyContentQuery: xq`fonto:document(@href)/*`,
 		}
 	);
+  // Fonto does NOT treat fragment like other clients, must be filtered in xq.
+  configureProperties(
+    sxModule,
+    xq`self::*[fonto:dita-class(., "map/topicref")][@href][contains(@href, '#')]`,
+    {
+      hierarchyContentQuery: xq`fonto:document(substring-before(@href, '#'))/*`,
+    }
+  );
 	// Each topicref without an href represents itself (e.g., topichead / topicgroup)
 	configureProperties(
 		sxModule,
-		xq`self::*[fonto:dita-class(., "map/topicref") and not(@href)]`,
+		xq`self::*[fonto:dita-class(., "map/topicref")][not(@href)]`,
 		{
 			hierarchyContentQuery: xq`.`,
 		}
