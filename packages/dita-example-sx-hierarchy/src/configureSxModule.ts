@@ -59,23 +59,30 @@ export default function configureSxModule(sxModule: SxModule): void {
 			hierarchyContentQuery: xq`.`,
 		}
 	);
-	// Each topicref with format="ditamap" points at a map and the hierarchy should include that
-	// map's children
-	configureProperties(
-		sxModule,
-		xq`self::*[fonto:dita-class(., "map/topicref") and @href and @format="ditamap"]`,
-		{
-			// Combine children of the topicref with the hierarchy children of the target map
-			hierarchyChildNodesQuery: xq`(child::*[fonto:dita-class(., "map/topicref")], fonto:document(@href)/*/fonto:hierarchy-child-nodes(.))`,
-		}
-	);
 
-	// Maprefs don't need the format attribute and always refer to DITA maps
-	configureProperties(sxModule, xq`self::mapref`, {
-		// This needs priority as the fonto:dita-class selectors in the rules above are considered
-		// to be more specific than self::mapref and would otherwise take precedence.
-		priority: 10,
-		// Combine children of the topicref with the hierarchy children of the target map
-		hierarchyChildNodesQuery: xq`(child::*[fonto:dita-class(., "map/topicref")], fonto:document(@href)/*/fonto:hierarchy-child-nodes(.))`,
-	});
+  // Each topicref with format="ditamap" points at a map and the hierarchy should include that
+  // map's children
+  // Maprefs don't need the format attribute and always refer to DITA maps
+  configureProperties(
+    sxModule,
+    xq`self::*[(fonto:dita-class(., "map/topicref") and @format="ditamap") or self::mapref][@href]`,
+    {
+      // #1814 Any children of the mapref should not be displayed, consider cleaning up in backend (during save).
+      hierarchyChildNodesQuery: xq`fonto:document(@href)/*/fonto:hierarchy-child-nodes(.)`,
+    }
+  );
+
+  // #1814 Maprefs can refer to a subset of a DITA map
+  // Unable to make fragment match the id (also tested without fonto:hierarchy-child-nodes(.))
+  // Difficult to test with dev server due to broken handling of fragment when requesting the ditamap (Fonto makes GET req with fragment and dev server also fails to remove fragment).
+
+  configureProperties(
+    sxModule,
+    xq`self::*[(fonto:dita-class(., "map/topicref") and @format="ditamap") or self::mapref][@href][contains(@href, '#')]`,
+    {
+      // TODO: Currently incomplete...
+      hierarchyChildNodesQuery: xq`fonto:document(substring-before(@href, '#'))//*[@id]`,
+      priority: 10
+    }
+  );
 }
