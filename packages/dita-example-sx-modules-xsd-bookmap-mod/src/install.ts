@@ -122,4 +122,8 @@ export default function install(): void {
 			return stepData;
 		}
 	);
+
+  setTimeout(() => {
+    console.log("documentsHierarchy: ", documentsHierarchy.getFirstVisibleHierarchyNode().documentReference.remoteDocumentId);
+  }, 5000);
 }

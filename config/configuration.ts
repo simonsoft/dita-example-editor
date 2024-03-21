@@ -26,3 +26,7 @@ configurationManager.set('unique-id-configurations', [
 		strategy: 'unique-for-document',
 	},
 ]);
+
+setTimeout(() => {
+  console.log("Scope:", configurationManager.get('scope'));
+}, 5000);
