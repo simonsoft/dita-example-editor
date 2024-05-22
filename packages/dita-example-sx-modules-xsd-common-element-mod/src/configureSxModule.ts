@@ -606,7 +606,8 @@ export default function configureSxModule(sxModule: SxModule): void {
 	//     specializations of DITA to create semantic markup for content at the phrase level, which then allows
 	//     (but does not require) specific processing or formatting. Category: Body elements
 	configureAsInlineFrame(sxModule, xq`self::ph`, t('phrase'), {
-		backgroundColor: 'blue',
+		backgroundColor: 'red',
+		isIgnoredForNavigation: true
 	});
 
 	// pre
