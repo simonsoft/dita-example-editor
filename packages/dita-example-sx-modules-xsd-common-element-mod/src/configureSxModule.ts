@@ -20,6 +20,7 @@ import configureMarkupLabel from 'fontoxml-families/src/configureMarkupLabel';
 import configureProperties from 'fontoxml-families/src/configureProperties';
 import createElementMenuButtonWidget from 'fontoxml-families/src/createElementMenuButtonWidget';
 import createMarkupLabelWidget from 'fontoxml-families/src/createMarkupLabelWidget';
+import createLabelQueryWidget from 'fontoxml-families/src/createLabelQueryWidget.js';
 import configureAsListElements, {
 	ListStyles,
 } from 'fontoxml-list-flow/src/configureAsListElements';
@@ -610,6 +611,18 @@ export default function configureSxModule(sxModule: SxModule): void {
 		isIgnoredForNavigation: true
 	});
 
+
+  // ph with keyref and no text content
+	configureProperties(sxModule, 'self::ph[@keyref]', {
+		inlineBefore: [
+			createLabelQueryWidget('""', {
+				inline: true,
+				suffixQuery: '@keyref'
+			})
+		],
+		isIgnoredForNavigation: true,
+		backgroundColor: 'yellow'
+	});
 	// pre
 	//     The preformatted element (<pre>) preserves line breaks and spaces entered manually by the author in
 	//     the content of the element, and also presents the content in a monospaced type font (depending on
