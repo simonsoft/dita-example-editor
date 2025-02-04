@@ -20,6 +20,7 @@ import configureMarkupLabel from 'fontoxml-families/src/configureMarkupLabel';
 import configureProperties from 'fontoxml-families/src/configureProperties';
 import createElementMenuButtonWidget from 'fontoxml-families/src/createElementMenuButtonWidget';
 import createMarkupLabelWidget from 'fontoxml-families/src/createMarkupLabelWidget';
+import createIconWidget from 'fontoxml-families/src/createIconWidget';
 import configureAsListElements, {
 	ListStyles,
 } from 'fontoxml-list-flow/src/configureAsListElements';
@@ -820,4 +821,50 @@ export default function configureSxModule(sxModule: SxModule): void {
 			targetQuery: xq`@href`,
 		},
 	});
+
+	// https://documentation.fontoxml.com/latest/iconwidgetoptions-083853d12052#properties
+
+	configureProperties(
+		sxModule,
+		xq`self::*[@platform]`,
+		{
+			blockOutsideAfter: {
+				conditions: {
+					widget: createIconWidget('dot-circle-o', {clickOperation: 'do-nothing'}),
+					// Positive priority ensures the condition visualisation makes sense, must be above element menu.
+					priority: 10
+				},
+			},
+			inlineAfter: {
+				conditions: {
+					widget: createIconWidget('dot-circle-o', {clickOperation: 'do-nothing'}),
+					// Negative priority ensures condition visualisation is the rightmost widget when inline.
+					priority: -1
+				},
+			},
+		}
+	);
+
+
+	configureProperties(
+		sxModule,
+		xq`self::*[@audience]`,
+		{
+			blockOutsideAfter: {
+				conditions: {
+					widget: createIconWidget('diagram-venn', {clickOperation: 'do-nothing'}),
+					// Positive priority ensures the condition visualisation makes sense, must be above element menu.
+					priority: 10
+				},
+			},
+			inlineAfter: {
+				conditions: {
+					widget: createIconWidget('diagram-venn', {clickOperation: 'do-nothing'}),
+					// Negative priority ensures condition visualisation is the rightmost widget when inline.
+					priority: -1
+				},
+			},
+		}
+	);
+
 }
