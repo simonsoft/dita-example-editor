@@ -273,6 +273,7 @@ export default function configureSxModule(sxModule: SxModule): void {
 				prefix: 'step',
 			}),
 		],
+		blockOutsideAfter: [createElementMenuButtonWidget()],
 		blockBeforeWidth: 'wide',
 	});
 
