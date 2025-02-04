@@ -867,4 +867,18 @@ export default function configureSxModule(sxModule: SxModule): void {
 		}
 	);
 
+	// TODO: Add additional widget to the table to indicate that there is row conditions. Otherwise invisible until placing a cursor in the table.
+	configureProperties(sxModule, xq`self::table[descendant::row[@audience]]`, {
+		markupLabel: t('table with profiling'),
+		// QUESTION: Why is there no "rowAfter" area?
+		// QUESTION: Why does the icon bleed into the frame?
+		rowBefore: {
+			conditions: {
+				// QUESTION: Is there any other way than making a clever widget that displays empty if row has no condition attr?
+				widget: createIconWidget('diagram-venn', {clickOperation: 'do-nothing'}),
+				priority: 10
+			},
+		}
+	});
+
 }
