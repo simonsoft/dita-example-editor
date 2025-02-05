@@ -473,16 +473,7 @@ export default function configureSxModule(sxModule: SxModule): void {
 	//     software that the author wants that list of topics generated at the particular location. For
 	//     example, it could be used in a specialization to reference the location of a list of program
 	//     listings or of authors of topics. Category: Bookmap elements
-	configureAsRemoved(
-		sxModule,
-		xq`self::booklist`,
-		bookmapElementLabels.booklist.markupLabel,
-		{
-			contextualOperations: formatContextualOperationListWithGroups(
-				convertToPlaceholderOrContainerOperations('placeholder')
-			),
-		}
-	);
+
 	configureAsSheetFrame(
 		sxModule,
 		xq`self::booklist[not(@href)]`,
@@ -707,8 +698,12 @@ export default function configureSxModule(sxModule: SxModule): void {
 	// bookmeta
 	//     The <bookmeta> element contains information about the book that is not considered book content, such
 	//     as copyright information, author information, and any classifications. Category: Bookmap elements
-	configureAsRemoved(sxModule, xq`self::bookmeta`, t('book meta'));
-
+	configureAsFrame(sxModule, xq`self::bookmeta`, undefined,
+		{
+			blockHeaderLeft: [createMarkupLabelWidget()],
+			priority: 200
+		}
+	);
 	// booknumber
 	//     The <booknumber> element contains the book's form number, such as SC21-1920. Category: Bookmap
 	//     elements
@@ -1360,4 +1355,11 @@ export default function configureSxModule(sxModule: SxModule): void {
 	// year
 	//     The <year> element denotes a year. Category: Bookmap elements
 	configureAsRemoved(sxModule, xq`self::year`, t('year'));
+
+	configureAsFrame(sxModule, xq`self::*[ancestor::bookmap]`, undefined,
+		{
+			blockHeaderLeft: [createMarkupLabelWidget()],
+			priority: 200
+		}
+	);
 }
