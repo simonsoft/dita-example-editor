@@ -674,7 +674,9 @@ export default function configureSxModule(sxModule: SxModule): void {
 			titleQuery: xq`
 			let $title := if(./title) then ./title else ./booktitle/mainbooktitle
 			return $title//text()[not(ancestor::*[name() = ("sort-at", "draft-comment", "foreign", "unknown", "required-cleanup", "image")])]/string() => string-join()`,
-			visibleChildSelector: xq`self::title or self::booktitle`,
+			// Attempt to undo the documented default behavior of visibleChildSelector.
+			visibleChildSelector: xq`self::*`,
+			//visibleChildSelector: xq`self::title or self::booktitle or self::frontmatter`,
 			blockFooter: [
 				createRelatedNodesQueryWidget(
 					xq`descendant::fn[not(@conref) and fonto:in-inline-layout(name())]`
