@@ -26,5 +26,56 @@ import xq from 'fontoxml-selectors/src/xq';
 export default function configureSxModule(sxModule: SxModule): void {
 	// Configure map and its specializations
 
-	// Remove all hierarchy as an experiment to get all content in the top sheetframe.
+	configureProperties(sxModule, xq`self::*[fonto:dita-class(., "map/map")]`, {
+		// maps have topicrefs and any of its specializations as children
+		hierarchyChildNodesQuery: xq`child::*[fonto:dita-class(., "map/topicref")]`,
+	});
+
+	// Configure topicref and its specializations
+
+	// Each topicref has topicrefs and any of its specializations as children
+	configureProperties(
+		sxModule,
+		xq`self::*[fonto:dita-class(., "map/topicref")]`,
+		{
+			hierarchyChildNodesQuery: xq`child::*[fonto:dita-class(., "map/topicref")]`,
+		}
+	);
+	// Each topicref with an href points at a content document. We'll use the document element for
+	// consistency and to provide a useful `contextNodeId` on operations triggered from the
+	// hierarchy node's Outline item.
+	configureProperties(
+		sxModule,
+		xq`self::*[fonto:dita-class(., "map/topicref") and @href]`,
+		{
+			hierarchyContentQuery: xq`fonto:document(@href)/*`,
+		}
+	);
+	// Each topicref without an href represents itself (e.g., topichead / topicgroup)
+	configureProperties(
+		sxModule,
+		xq`self::*[fonto:dita-class(., "map/topicref") and not(@href)]`,
+		{
+			hierarchyContentQuery: xq`.`,
+		}
+	);
+	// Each topicref with format="ditamap" points at a map and the hierarchy should include that
+	// map's children
+	configureProperties(
+		sxModule,
+		xq`self::*[fonto:dita-class(., "map/topicref") and @href and @format="ditamap"]`,
+		{
+			// Combine children of the topicref with the hierarchy children of the target map
+			hierarchyChildNodesQuery: xq`(child::*[fonto:dita-class(., "map/topicref")], fonto:document(@href)/*/fonto:hierarchy-child-nodes(.))`,
+		}
+	);
+
+	// Maprefs don't need the format attribute and always refer to DITA maps
+	configureProperties(sxModule, xq`self::mapref`, {
+		// This needs priority as the fonto:dita-class selectors in the rules above are considered
+		// to be more specific than self::mapref and would otherwise take precedence.
+		priority: 10,
+		// Combine children of the topicref with the hierarchy children of the target map
+		hierarchyChildNodesQuery: xq`(child::*[fonto:dita-class(., "map/topicref")], fonto:document(@href)/*/fonto:hierarchy-child-nodes(.))`,
+	});
 }
