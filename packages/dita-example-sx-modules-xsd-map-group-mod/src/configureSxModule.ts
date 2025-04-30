@@ -36,13 +36,19 @@ export default function configureSxModule(sxModule: SxModule): void {
 		titleQuery: xq`if (topicmeta/navtitle) then (topicmeta/navtitle//text()[not(ancestor::*[name() = ("sort-at", "draft-comment", "foreign", "unknown", "required-cleanup", "image")])]/string() => string-join()) else string(./@navtitle)`,
 		visibleChildSelector: xq`self::topicmeta`,
 		blockHeaderLeft: [createMarkupLabelWidget()],
+		defaultTextContainer: 'topicmeta',
+		emptyElementPlaceholderText: "navtitle from topichead..."
 	});
 
 	// topicmeta in topichead
 	configureAsStructure(
 		sxModule,
 		xq`self::topicmeta[parent::topichead]`,
-		undefined
+		undefined, {
+			defaultTextContainer: "navtitle",
+			emptyElementPlaceholderText: "navtitle from topicmeta...",
+			isAutoremovableIfEmpty: false // This fails to prevent removal of topicmeta when <data> present.
+		}
 	);
 
 	// navtitle in topicmeta in topichead
@@ -52,8 +58,11 @@ export default function configureSxModule(sxModule: SxModule): void {
 		undefined,
 		{
 			fontVariation: 'document-title',
+			emptyElementPlaceholderText: "navtitle...",
+			isRemovableIfEmpty: true, // Unable to remove navtitle (backspace) when <data> is NOT present.
 		}
 	);
+
 
 	// topicgroup
 	//     The <topicgroup> element is for creating groups of <topicref> elements without affecting the
