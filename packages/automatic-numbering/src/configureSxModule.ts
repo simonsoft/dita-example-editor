@@ -10,7 +10,7 @@ export default function configureSxModule(sxModule) {
 		'http://example.app/ns',
 		'getDivisionNumber',
 		// selector matching nodes that should be counted
-		"self::*[name()=('chapter', 'division', 'divisions')][not(@format='ditamap')]",
+		"self::*[name()=('chapter', 'topicref', 'divisions')][not(@format='ditamap')][not(ancestor::appendix)]",
 		// namespace and name of the accumulator function we defined above
 		'http://example.app/ns',
 		'divisionNumberingCallback'
@@ -21,7 +21,7 @@ export default function configureSxModule(sxModule) {
 		'http://example.app/ns',
 		'getAppendixNumber',
 		// selector matching nodes that should be counted
-		"self::*[name()=('appendix', 'appendices')][not(@format='ditamap')]",
+		"self::*[name()=('appendix', 'topicref', 'appendices')][not(@format='ditamap')][not(ancestor::chapter)]",
 		// namespace and name of the accumulator function we defined above
 		'http://example.app/ns',
 		'divisionNumberingCallback'
