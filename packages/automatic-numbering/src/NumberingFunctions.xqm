@@ -6,7 +6,10 @@ declare %public function app:divisionNumberingCallback(
     $node as node(),
     $isUnloaded as xs:boolean
 ) as item()* {
-    if ($relType eq "first") then
+    if ($isUnloaded) then
+		(: Does not match the selector when isUnloaded, SUP-5043. :)
+		$previousAccumulator
+    else if ($relType eq "first") then
 	    (: Return 1 for the first element, $previousAccumulator does not contain a value yet :)
 	    1
 	else if ($relType eq "parent") then
