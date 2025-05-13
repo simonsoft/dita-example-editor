@@ -8,7 +8,7 @@
 		<topicref href="clogs/contents.xml" id="topicref_4bd5d9b5-172c-4a2d-c254-56b0d62fabf7" outputclass="clogs" />
 		<topicref href="clogs/types.xml" id="topicref_5921f596-c7a1-4581-fc99-78909269b67e" outputclass="clogs" />
 		<topicref href="clogs/traditional.xml" id="topicref_a535a065-ca8b-4cd3-ce55-d9e79688f4d7" outputclass="clogs" />
-		<topicref href="clogs/fashion.xml" id="topicref_e958c9d4-9e7a-47f6-e89f-ca6ed631d2db" outputclass="clogs" />
+		<topicref href="intentionally-missing" id="topicref_e958c9d4-9e7a-47f6-e89f-ca6ed631d2db" outputclass="clogs" />
 		<topicref href="clogs/museum.xml" id="topicref_56cb1743-fed7-49be-a40d-d9af1c6ff530" outputclass="clogs" />
 	</chapter>
 	<appendix href="clogs/glossary.xml" id="id-53fc0229-2792-435a-86f0-0c1cb0080268" outputclass="clogs" />
