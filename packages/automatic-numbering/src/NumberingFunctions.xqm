@@ -9,7 +9,7 @@ declare %public function app:divisionNumberingCallback(
     if ($isUnloaded) then
 		(: Does not necessarily match the selector when isUnloaded, SUP-5043. :)
 		$previousAccumulator
-    else if ($relType eq "first") then
+    else if ($relType eq "first" or empty($previousAccumulator)) then
 	    (: Return 1 for the first element, $previousAccumulator does not contain a value yet :)
 	    1
 	else if ($relType eq "parent") then
