@@ -7,7 +7,7 @@ declare %public function app:divisionNumberingCallback(
     $isUnloaded as xs:boolean
 ) as item()* {
     if ($isUnloaded) then
-		(: Does not match the selector when isUnloaded, SUP-5043. :)
+		(: Does not necessarily match the selector when isUnloaded, SUP-5043. :)
 		$previousAccumulator
     else if ($relType eq "first") then
 	    (: Return 1 for the first element, $previousAccumulator does not contain a value yet :)
