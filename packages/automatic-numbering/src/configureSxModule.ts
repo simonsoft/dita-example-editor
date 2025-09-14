@@ -54,4 +54,18 @@ export default function configureSxModule(sxModule) {
 		isDraggable: true,
 		priority: 1000
 	});
+
+
+	configureAsStructureViewItem(sxModule, xq`self::appendix[topicmeta/navtitle]`, {
+		icon: 'folder-open-o',
+		titleQuery: xq`
+			import module namespace app = "http://example.app/ns";
+			import module namespace fonto = "http://www.fontoxml.com/functions";
+			string-join(
+				app:getAppendixNumber(fonto:current-hierarchy-node-id(), .) ! (if (position() = 1) then fn:format-integer(xs:integer(.), 'A') else .),
+				"."
+			) || " - " || ./topicmeta/navtitle
+		`,
+		priority: 10
+	});
 }
