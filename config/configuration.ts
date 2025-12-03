@@ -26,3 +26,11 @@ configurationManager.set('unique-id-configurations', [
 		strategy: 'unique-for-document',
 	},
 ]);
+
+import attributesEditorConfigurationJson from './attributesEditorConfiguration.json';
+
+configurationManager.set(
+	'attributes-editor-configuration',
+	attributesEditorConfigurationJson
+);
+

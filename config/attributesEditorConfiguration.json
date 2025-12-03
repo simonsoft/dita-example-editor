@@ -1,0 +1,37 @@
+{
+	"self::*": {
+		"audience": {
+			"localName": "audience",
+			"label": "Audience",
+			"display": "input",
+			"properties": {
+				"type": "text"
+			}
+		},
+		"platform": {
+			"localName": "platform",
+			"label": "Platform",
+			"display": "input",
+			"properties": {
+				"type": "text"
+			}
+		},
+		"outputclass": {
+			"localName": "outputclass",
+			"label": "outputclass",
+			"display": "input",
+			"properties": {
+				"type": "text"
+			}
+		},
+		"xml:lang": {
+			"localName": "lang",
+			"label": "Lang",
+			"display": "input",
+			"properties": {
+				"type": "text"
+			}
+		}
+    }
+}
+
