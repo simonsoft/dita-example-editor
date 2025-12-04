@@ -81,5 +81,19 @@
 				"type": "operation/:contextual-insert-topicref--to-existing-document"
 			}
 		]
+	},
+	":contextual-insert-keydef--below": {
+		"label": "t__Add keydef below",
+		"steps": {
+			"type": "operation/insert-next-to-context-node",
+			"data": {
+				"side": "after",
+				"childNodeStructure": [
+					"keydef",
+					{"keys": ""},
+					[{ "bindTo": "selection", "empty": true }]
+				]
+			}
+		}
 	}
 }

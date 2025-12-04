@@ -1,7 +1,9 @@
+import configureAsFrame from 'fontoxml-families/src/configureAsFrame';
 import configureAsRemoved from 'fontoxml-families/src/configureAsRemoved';
 import configureAsSheetFrame from 'fontoxml-families/src/configureAsSheetFrame';
 import configureAsStructure from 'fontoxml-families/src/configureAsStructure';
 import configureAsTitleFrame from 'fontoxml-families/src/configureAsTitleFrame';
+import createElementMenuButtonWidget from 'fontoxml-families/src/createElementMenuButtonWidget';
 import createMarkupLabelWidget from 'fontoxml-families/src/createMarkupLabelWidget';
 import createRelatedNodesQueryWidget from 'fontoxml-families/src/createRelatedNodesQueryWidget';
 import t from 'fontoxml-localization/src/t';
@@ -19,7 +21,7 @@ export default function configureSxModule(sxModule: SxModule): void {
 	configureAsSheetFrame(sxModule, xq`self::map`, t('map'), {
 		defaultTextContainer: 'title',
 		titleQuery: xq`title//text()[not(ancestor::*[name() = ("sort-at", "draft-comment", "foreign", "unknown", "required-cleanup", "image")])]/string() => string-join()`,
-		visibleChildSelector: xq`self::title`,
+		//visibleChildSelector: xq`self::title`,
 		blockFooter: [
 			createRelatedNodesQueryWidget(
 				xq`descendant::fn[not(@conref) and fonto:in-inline-layout(.)]`
@@ -50,6 +52,7 @@ export default function configureSxModule(sxModule: SxModule): void {
 
 	// reltable
 	configureAsRemoved(sxModule, xq`self::reltable`, t('reltable'));
+	//configureAsFrame(sxModule, xq`self::reltable`, t('reltable'));
 
 	// searchtitle
 	configureAsRemoved(sxModule, xq`self::searchtitle`, t('searchtitle'));
@@ -110,4 +113,10 @@ export default function configureSxModule(sxModule: SxModule): void {
 
 	// ux-window
 	configureAsRemoved(sxModule, xq`self::ux-window`, t('ux-window'));
+
+	configureAsFrame(sxModule, xq`self::keydef`, undefined, {
+		blockHeaderLeft: [createMarkupLabelWidget()],
+		blockOutsideAfter: [createElementMenuButtonWidget()],
+		//priority: 10000
+	});
 }

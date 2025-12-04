@@ -12,6 +12,11 @@ const INSERT_TOPICREF_OPERATION_NAMES = [
 	':contextual-insert-topicref--to-existing-document',
 ];
 
+const INSERT_KEYDEF_OPERATION_NAMES = [
+	':contextual-insert-keydef--below',
+	'contextual-topicref-remove'
+];
+
 // The operation names used for moving or removing a topic. Notice that this array contains nested
 // arrays, which determine the grouping that these operations are shown in.
 const MOVE_TOPICREF_OPERATION_NAMES = [
@@ -48,7 +53,7 @@ export default function configureSxModule(sxModule: SxModule): void {
 	//   https://documentation.fontoxml.com/latest/add-and-configure-document-outline-e4f7c8b3a049
 	configureAsStructureViewItem(sxModule, xq`fonto:dita-class(., "map/map")`, {
 		icon: 'folder-open-o',
-		recursionQuery: xq`()`,
+		recursionQuery: xq`(child::keydef)`,
 	});
 	configureAsStructureViewItem(
 		sxModule,
@@ -58,6 +63,11 @@ export default function configureSxModule(sxModule: SxModule): void {
 			recursionQuery: xq`()`,
 		}
 	);
+	configureAsStructureViewItem(sxModule, xq`self::keydef`, {
+		icon: 'file',
+		recursionQuery: xq`()`,
+		priority: 10
+	});
 	configureAsStructureViewItem(sxModule, xq`self::topicgroup`, {
 		icon: 'folder-open-o',
 		recursionQuery: xq`()`,
@@ -109,6 +119,14 @@ export default function configureSxModule(sxModule: SxModule): void {
 		xq`self::mapref`,
 		formatContextualOperationListWithGroups(MOVE_TOPICREF_OPERATION_NAMES),
 		-2
+	);
+
+	configureContextualOperations(
+		sxModule,
+		xq`self::keydef`,
+		formatContextualOperationListWithGroups([
+			INSERT_KEYDEF_OPERATION_NAMES,
+		])
 	);
 
 	// Register node status queries, which help users identify Outline items with one status or another.

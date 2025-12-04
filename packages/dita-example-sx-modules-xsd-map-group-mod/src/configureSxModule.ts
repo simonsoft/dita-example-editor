@@ -20,7 +20,7 @@ export default function configureSxModule(sxModule: SxModule): void {
 	//     included in the table of contents, and no linking or other relationships are defined. The <keydef>
 	//     element is not the only way to define keys; its purpose is to simplify the process by defaulting
 	//     several attributes to achieve the described behaviors.
-	configureAsRemoved(sxModule, xq`self::keydef`, t('keydef'));
+	//configureAsRemoved(sxModule, xq`self::keydef`, t('keydef'));
 
 	// mapref
 	//     The <mapref> element is a convenience element that has the same meaning as a <topicref> element that
