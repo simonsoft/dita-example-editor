@@ -20,6 +20,7 @@ import configureMarkupLabel from 'fontoxml-families/src/configureMarkupLabel';
 import configureProperties from 'fontoxml-families/src/configureProperties';
 import createElementMenuButtonWidget from 'fontoxml-families/src/createElementMenuButtonWidget';
 import createMarkupLabelWidget from 'fontoxml-families/src/createMarkupLabelWidget';
+import createNumberingWidget from 'fontoxml-families/src/createNumberingWidget';
 import configureAsListElements, {
 	ListStyles,
 } from 'fontoxml-list-flow/src/configureAsListElements';
@@ -579,6 +580,31 @@ export default function configureSxModule(sxModule: SxModule): void {
 			selector: xq`self::ol`,
 			style: ListStyles.NUMBERED,
 			nodeName: 'ol',
+		},
+		item: {
+			selector: xq`self::li`,
+			nodeName: 'li',
+		},
+		paragraph: {
+			nodeName: 'p',
+		},
+	});
+
+	// NOT WORKING (loads but numbers whole topic): containerSelector: xq`self::body//ol[@outputclass]`,
+	// WORKS: containerSelector: xq`let $name:=child::*[@outputclass]/@outputclass return self::*[local-name() = $name]`,
+	configureAsListElements(sxModule, {
+		list: {
+			selector: xq`self::ol[@outputclass]`,
+			style: 
+				createNumberingWidget(xq`self::li`, {
+						numberingStyle: 'upperAlpha',
+						
+						containerSelector: xq`self::section`,
+						//containerSelector: xq`let $name:=child::*[@outputclass]/@outputclass return self::*[local-name() = $name]`,
+						prefix: 'li',
+					}),
+					
+			//nodeName: 'ol',
 		},
 		item: {
 			selector: xq`self::li`,

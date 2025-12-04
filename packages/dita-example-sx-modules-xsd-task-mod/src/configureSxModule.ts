@@ -276,6 +276,7 @@ export default function configureSxModule(sxModule: SxModule): void {
 		blockBeforeWidth: 'wide',
 	});
 
+
 	// step in steps-unordered
 	configureAsGroup(
 		sxModule,
@@ -454,7 +455,7 @@ export default function configureSxModule(sxModule: SxModule): void {
 		blockBefore: [
 			createNumberingWidget(xq`self::substep`, {
 				numberingStyle: 'lowerAlpha',
-				containerSelector: xq`self::substeps`,
+				//containerSelector: xq`self::substeps`,
 				prefix: 'step',
 			}),
 		],
