@@ -19,6 +19,7 @@ import configureContextualOperations from 'fontoxml-families/src/configureContex
 import configureMarkupLabel from 'fontoxml-families/src/configureMarkupLabel';
 import configureProperties from 'fontoxml-families/src/configureProperties';
 import createElementMenuButtonWidget from 'fontoxml-families/src/createElementMenuButtonWidget';
+import createLabelQueryWidget from 'fontoxml-families/src/createLabelQueryWidget';
 import createMarkupLabelWidget from 'fontoxml-families/src/createMarkupLabelWidget';
 import createNumberingWidget from 'fontoxml-families/src/createNumberingWidget';
 import configureAsListElements, {
@@ -592,6 +593,7 @@ export default function configureSxModule(sxModule: SxModule): void {
 
 	// NOT WORKING (loads but numbers whole topic): containerSelector: xq`self::body//ol[@outputclass]`,
 	// WORKS: containerSelector: xq`let $name:=child::*[@outputclass]/@outputclass return self::*[local-name() = $name]`,
+	/*
 	configureAsListElements(sxModule, {
 		list: {
 			selector: xq`self::ol[@outputclass]`,
@@ -599,7 +601,7 @@ export default function configureSxModule(sxModule: SxModule): void {
 				createNumberingWidget(xq`self::li`, {
 						numberingStyle: 'upperAlpha',
 						
-						containerSelector: xq`self::section`,
+						//containerSelector: xq`self::section`,
 						//containerSelector: xq`let $name:=child::*[@outputclass]/@outputclass return self::*[local-name() = $name]`,
 						prefix: 'li',
 					}),
@@ -613,6 +615,34 @@ export default function configureSxModule(sxModule: SxModule): void {
 		paragraph: {
 			nodeName: 'p',
 		},
+	});
+	*/
+
+	configureAsListElements(sxModule, {
+		list: {
+			selector: xq`self::ol[@outputclass][not(parent::li)]`,
+			style:
+				// Counts all ol/li before (to document root) and subtracts ol/li before previous restart (disregarding ol nested in any list). -->
+				createLabelQueryWidget(xq`fn:format-integer(count(preceding-sibling::li) + count(preceding::ol[not(parent::li)]/li) - count(preceding::ol[not(parent::li)][not(@restart='no')][1]/preceding::ol[not(parent::li)]/li) + 1, '1')`, {
+					inline: true,
+					suffixQuery: xq`'.'`
+				}),
+		},
+		item: {
+			nodeName: 'li'
+		},
+		paragraph: {
+			nodeName: 'p'
+		}
+	});
+
+	configureProperties(sxModule, 'self::ol[@outputclass]', {
+		markupLabel: xq`concat(local-name(), ' (restart ', @restart, ')')`
+	});
+
+	configureAsFrame(sxModule, xq`self::ol or self::ul`, undefined, {
+		blockHeaderLeft: [createMarkupLabelWidget()],
+		priority: 10
 	});
 
 	// p
