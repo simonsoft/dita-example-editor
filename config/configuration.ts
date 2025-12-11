@@ -18,6 +18,10 @@ configurationManager.set('structure-view-configuration', {
 	enableDragAndDrop: true,
 });
 
+configurationManager.set('structure-configuration', {
+	expandItemsUntilLevel: 1,
+});
+
 configurationManager.set('unique-id-configurations', [
 	{
 		selector: xq`self::*`,

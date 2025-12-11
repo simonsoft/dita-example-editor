@@ -78,6 +78,13 @@ export default function configureSxModule(sxModule: SxModule): void {
 		}
 	);
 
+	// A contrived example of hiding structure view items until the top-level title is 'show'.
+	configureAsStructureViewItem(sxModule, xq`self::*[ancestor-or-self::topichead][ancestor::*[last()]/title != 'show']`,
+		{
+			isHiddenFromView: true,
+			priority: 20
+		});
+
 	// Register the contextual operations with which a user can move topics up/down/left/right,
 	// as well as insert child topics and so on.
 	//
