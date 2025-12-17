@@ -53,7 +53,7 @@ export default function configureSxModule(sxModule: SxModule): void {
 	//   https://documentation.fontoxml.com/latest/add-and-configure-document-outline-e4f7c8b3a049
 	configureAsStructureViewItem(sxModule, xq`fonto:dita-class(., "map/map")`, {
 		icon: 'folder-open-o',
-		recursionQuery: xq`(child::keydef)`,
+		recursionQuery: xq`()`,
 	});
 	configureAsStructureViewItem(
 		sxModule,
@@ -63,11 +63,7 @@ export default function configureSxModule(sxModule: SxModule): void {
 			recursionQuery: xq`()`,
 		}
 	);
-	configureAsStructureViewItem(sxModule, xq`self::keydef`, {
-		icon: 'file',
-		recursionQuery: xq`()`,
-		priority: 10
-	});
+
 	configureAsStructureViewItem(sxModule, xq`self::topicgroup`, {
 		icon: 'folder-open-o',
 		recursionQuery: xq`()`,

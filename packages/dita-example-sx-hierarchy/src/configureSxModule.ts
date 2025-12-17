@@ -29,7 +29,7 @@ export default function configureSxModule(sxModule: SxModule): void {
 	configureProperties(sxModule, xq`self::*[fonto:dita-class(., "map/map")]`, {
 		// maps have topicrefs and any of its specializations as children
 		// Why is [not(@processing-role = 'resource-only')] not excluding <keydef>?
-		hierarchyChildNodesQuery: xq`child::*[fonto:dita-class(., "map/topicref")][not(name() = ('keydef'))][not(@processing-role = 'resource-only')]`,
+		hierarchyChildNodesQuery: xq`child::*[fonto:dita-class(., "map/topicref")][not(@processing-role = 'resource-only')]`,
 	});
 
 	// Configure topicref and its specializations
